@@ -34,8 +34,17 @@ image.src = './img/PokemonStyleGameMap1_0.png';
 const foregroundImage = new Image()
 foregroundImage.src =  './img/PokemonStyleGameMapForeGround.png';
 
-const playerImage = new Image();
-playerImage.src = './img/playerDown.png';
+const playerDownImage = new Image();
+playerDownImage.src = './img/playerDown.png';
+
+const playerUpImage = new Image();
+playerUpImage.src = './img/playerUp.png';
+
+const playerLeftImage = new Image();
+playerLeftImage.src = './img/playerLeft.png';
+
+const playerRightImage = new Image();
+playerRightImage.src = './img/playerRight.png';
 
 const player = new Sprite({
     position: {
@@ -43,9 +52,15 @@ const player = new Sprite({
         x: canvas.width / 2 - (192 / 4) / 2,
         y: canvas.height / 2 - 68 / 2,
     },
-    image: playerImage,
+    image: playerDownImage,
     frames: {
         max: 4
+    },
+    sprites: {
+        up: playerUpImage,
+        left: playerLeftImage,
+        down: playerDownImage,
+        right: playerRightImage,
     }
 })
 
@@ -107,8 +122,11 @@ function animate() {
 
     let moving = true;
 
-    if (keys.w.pressed) {
+    player.moving = false;
 
+    if (keys.w.pressed) {
+        player.moving = true
+        player.image = player.sprites.up
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (rectangularCollision({
@@ -133,6 +151,8 @@ function animate() {
         })
     }
     if (keys.a.pressed) {
+        player.moving = true
+        player.image = player.sprites.left
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (rectangularCollision({
@@ -155,6 +175,8 @@ function animate() {
         movables.forEach(movable => { movable.position.x += 3 })
     }
     if (keys.s.pressed) {
+        player.moving = true
+        player.image = player.sprites.down
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (rectangularCollision({
@@ -177,6 +199,8 @@ function animate() {
         movables.forEach(movable => { movable.position.y -= 3 })
     }
     if (keys.d.pressed) {
+        player.moving = true
+        player.image = player.sprites.right
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (rectangularCollision({
