@@ -1,5 +1,5 @@
-#﻿# TopDownGame
+# TopDownGame
 
-﻿# Base Game
- 
+## Base Game
+
 Base for other similiar Games!
