@@ -55,7 +55,12 @@ class Boundary {
     }
 
     drawBoundary() {
-        context.fillStyle = 'transparent'
+        context.fillStyle = 'rgba(255, 0, 0, 0.5'
+        context.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+    drawbattleZones() {
+        context.fillStyle = 'rgba(0, 0, 255, 0.5'
         context.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
+
