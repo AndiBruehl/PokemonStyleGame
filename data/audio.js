@@ -19,8 +19,8 @@ const audio = {
     html5: true,
     volume: 0.1
   }),
-  fireballHit: new Howl({
-    src: './audio/fireballHit.wav',
+  FireballHit: new Howl({
+    src: './audio/FireballHit.wav',
     html5: true,
     volume: 0.1
   }),

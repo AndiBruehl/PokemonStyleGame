@@ -113,7 +113,7 @@ class Monster extends Sprite {
   }
 
   faint() {
-    document.querySelector('#dialogueBox').innerHTML = this.name + ' fainted!'
+    document.querySelector('#dialogueBox').innerHTML = this.name + ' wurde besiegt!'
     gsap.to(this.position, {
       y: this.position.y + 20
     })
@@ -127,7 +127,7 @@ class Monster extends Sprite {
   attack({ attack, recipient, renderedSprites }) {
     document.querySelector('#dialogueBox').style.display = 'block'
     document.querySelector('#dialogueBox').innerHTML =
-      this.name + ' used ' + attack.name
+      this.name + ' setzt ' + attack.name + ' ein!'
 
     let healthBar = '#enemyHealthBar'
     if (this.isEnemy) healthBar = '#playerHealthBar'
@@ -140,14 +140,14 @@ class Monster extends Sprite {
     switch (attack.name) {
       case 'Fireball':
         audio.initFireball.play()
-        const fireballImage = new Image()
-        fireballImage.src = './img/fireball.png'
-        const fireball = new Sprite({
+        const FireballImage = new Image()
+        FireballImage.src = './img/Fireball.png'
+        const Fireball = new Sprite({
           position: {
             x: this.position.x,
             y: this.position.y
           },
-          image: fireballImage,
+          image: FireballImage,
           frames: {
             max: 4,
             hold: 10
@@ -155,14 +155,14 @@ class Monster extends Sprite {
           animate: true,
           rotation
         })
-        renderedSprites.splice(1, 0, fireball)
+        renderedSprites.splice(1, 0, Fireball)
 
-        gsap.to(fireball.position, {
+        gsap.to(Fireball.position, {
           x: recipient.position.x,
           y: recipient.position.y,
           onComplete: () => {
             // Enemy actually gets hit
-            audio.fireballHit.play()
+            audio.FireballHit.play()
             gsap.to(healthBar, {
               width: recipient.health + '%'
             })
