@@ -1,10 +1,7 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
     * {
       font-family: 'Press Start 2P', cursive;
@@ -28,13 +25,142 @@
     button:hover {
       background-color: #ddd;
     }
+
+    .control-grid {
+      display: grid;
+
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      gap: 10%;
+      height: 50%;
+      width: 20%;
+
+      margin-top: auto;
+      margin-left: -25vw;
+
+    }
+
+    .control-grid div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      /* Adjust as needed */
+      height: 50px;
+      /* Adjust as needed */
+      border: 1px solid black;
+      /* Just for visibility */
+    }
+
+    .control-names {
+      font-size: 15px;
+
+      gap: 10%;
+      height: 100%;
+      width: 100%;
+
+      margin-top: -8vh;
+      margin-left: 45vw;
+
+      display: flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .control-names2 {
+      font-size: 15px;
+
+      gap: 10%;
+      height: 100%;
+      width: 100%;
+
+      margin-top: -30vh;
+      margin-right: -50vw;
+      padding-bottom: 2vh;
+      display: flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    #item-0 {
+
+      grid-row-start: 1;
+      grid-column-start: 2;
+
+      grid-row-end: 2;
+      grid-column-end: 3;
+
+    }
+
+    #item-1 {
+
+      grid-row-start: 2;
+      grid-column-start: 1;
+
+      grid-row-end: 3;
+      grid-column-end: 2;
+
+    }
+
+    #item-2 {
+
+      grid-row-start: 2;
+      grid-column-start: 2;
+
+      grid-row-end: 3;
+      grid-column-end: 3;
+
+    }
+
+    #item-3 {
+
+      grid-row-start: 2;
+      grid-column-start: 3;
+
+      grid-row-end: 3;
+      grid-column-end: 4;
+
+    }
+
+    #item-0,
+    #item-1,
+    #item-2,
+    #item-3 {
+      height: 48px;
+      width: 48px;
+      border: white 1px solid;
+      border-radius: 20%;
+      -webkit-box-shadow: 3px 3px 5px 0px rgba(255, 255, 255, 1);
+      -moz-box-shadow: 3px 3px 5px 0px rgba(255, 255, 255, 1);
+      box-shadow: 3px 3px 5px 0px rgba(255, 255, 255, 1);
+    }
+
+    .Spielfigursteuerung,
+    .Kampfsteuerung {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border: 1px solid white;
+    }
+
+    img {
+      display: block;
+      margin-left: -1vw;
+      z-index: -1;
+
+    }
   </style>
 </head>
 
 <div style="display: inline-block; position: relative">
-  <div
-    id="overlappingDiv"
-    style="
+  <div id="overlappingDiv" style="
       background-color: black;
       position: absolute;
       top: 0;
@@ -44,16 +170,18 @@
       opacity: 0;
       pointer-events: none;
       z-index: 10;
-    "
-  ></div>
+    ">
+  </div>
+
+
 
   <canvas></canvas>
 
 
+
   <div id="userInterface" style="display: none">
     <!-- Represents health bar of draggle (enemy) -->
-    <div
-      style="
+    <div style="
         background-color: white;
         width: 250px;
         position: absolute;
@@ -61,30 +189,23 @@
         left: 50px;
         border: 4px black solid;
         padding: 12px;
-      "
-    >
+      ">
       <h1 style="font-size: 16px">Draggle</h1>
       <div style="position: relative">
-        <div
-          style="height: 5px; background-color: #ccc; margin-top: 10px"
-        ></div>
-        <div
-          id="enemyHealthBar"
-          style="
+        <div style="height: 5px; background-color: #ccc; margin-top: 1px"></div>
+        <div id="enemyHealthBar" style="
             height: 5px;
             background-color: green;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-          "
-        ></div>
+          "></div>
       </div>
     </div>
 
     <!-- Represents health bar of emby (us) -->
-    <div
-      style="
+    <div style="
         background-color: white;
         width: 250px;
         position: absolute;
@@ -92,29 +213,22 @@
         right: 50px;
         border: 4px black solid;
         padding: 12px;
-      "
-    >
+      ">
       <h1 style="font-size: 16px">Emby</h1>
       <div style="position: relative">
-        <div
-          style="height: 5px; background-color: #ccc; margin-top: 10px"
-        ></div>
-        <div
-          id="playerHealthBar"
-          style="
+        <div style="height: 5px; background-color: #ccc; margin-top: 1px"></div>
+        <div id="playerHealthBar" style="
             height: 5px;
             background-color: green;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-          "
-        ></div>
+          "></div>
       </div>
     </div>
 
-    <div
-      style="
+    <div style="
         background-color: white;
         height: 140px;
         position: absolute;
@@ -123,11 +237,8 @@
         right: 0;
         border-top: 4px black solid;
         display: flex;
-      "
-    >
-      <div
-        id="dialogueBox"
-        style="
+      ">
+      <div id="dialogueBox" style="
           position: absolute;
           top: 0;
           right: 0;
@@ -137,50 +248,92 @@
           padding: 12px;
           display: none;
           cursor: pointer;
-        "
-      >
-        sdkfjlsdajl
+        ">
       </div>
-      <div
-        id="attacksBox"
-        style="
+      <div id="attacksBox" style="
           width: 66.66%;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-        "
-      ></div>
-      <div
-        style="
+        "></div>
+      <div style="
           display: flex;
           align-items: center;
           justify-content: center;
           width: 33.33%;
           border-left: 4px black solid;
-        "
-      >
+        ">
         <h1 id="attackType" style="font-size: 16px">Attackenart</h1>
       </div>
     </div>
   </div>
+
 </div>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
-  integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-  integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<script src="data/audio.js"></script>
-<script src="data/battleZones.js"></script>
-<script src="data/collisions.js"></script>
-<script src="data/attacks.js"></script>
-<script src="data/monsters.js"></script>
-<script src="js/utils.js"></script>
-<script src="classes.js"></script>
-<script src="index.js"></script>
-<script src="battleScene.js"></script>
+
+
+<div style="
+  color: white;
+  max-width: 100vw;
+  margin: 0 auto;
+  margin-right: 59.4%
+
+">
+  <h1 style="
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1.2%;
+    border: white 1px solid;
+  ">Controls</h1>
+  <div class="controls-container" style="
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  ">
+    <div class="Spielfigursteuerung">
+      <p>Bewegung der Spielfigur</p>
+      <div class="control-grid">
+        <div id="item-0">W</div>
+        <div id="item-1">A</div>
+        <div id="item-2">S</div>
+        <div id="item-3">D</div>
+      </div>
+      <div class="control-names">
+        <p>W - hoch</p>
+        <p>A - links</p>
+        <p>S - runter</p>
+        <p>D - rechts</p>
+      </div>
+    </div>
+
+    <div class="Kampfsteuerung">
+      <p>Kampfsteuerung</p>
+      <div class="control-grid">
+        <img
+          src="data:image/png;base64,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"
+          alt="maus1">
+      </div>
+      <div class="control-names2">
+        <p>Attacke:</p>
+        <p> - Auswahl mit Linksklick</p>
+        <p>Erneutes Klicken:</p>
+        <p> - gegnerische Attacke</p>
+        <p> - Kampfende</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="data/audio.js"></script>
+  <script src="data/battleZones.js"></script>
+  <script src="data/collisions.js"></script>
+  <script src="data/attacks.js"></script>
+  <script src="data/monsters.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="classes.js"></script>
+  <script src="index.js"></script>
+  <script src="battleScene.js"></script>
