@@ -9,7 +9,7 @@ const monsters = {
     },
     frames: {
       max: 4,
-      hold: 30
+      hold: 5
     },
     animate: true,
     name: 'Emby',
